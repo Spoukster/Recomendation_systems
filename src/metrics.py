@@ -59,6 +59,9 @@ def recall_at_k(recommended_list, bought_list, k=5):
     bought_list = np.array(bought_list)
     recommended_list = np.array(recommended_list[:k])
     
+    if k < len(recommended_list):
+        recommended_list = recommended_list[:k]
+    
     flags = np.isin(bought_list, recommended_list)
     
     recall = flags.sum() / len(bought_list)
